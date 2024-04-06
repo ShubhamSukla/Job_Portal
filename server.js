@@ -3,8 +3,13 @@
 import  express  from 'express';
 import dotenv from 'dotenv';
 import colors from 'colors';
-import connectDb from './config/db.js';
+import cors from 'cors';
+import morgan from 'morgan';
 
+
+//files imports
+import connectDb from './config/db.js';
+import testRoutes from "./routes/testRoutes.js"
 
 dotenv.config()
 
@@ -15,9 +20,16 @@ connectDb();
 const app=express()
 
 
-app.get("/",(req,res)=>{
-    res.send("<h1>Welcome to job portal</h1>")
-})
+//middlewares
+app.use(express.json());
+app.use(cors());
+app.use(morgan("dev"));
+
+
+//routes
+
+app.use("/api/v1/test",testRoutes);
+
 
 const PORT=process.env.PORT||8080
 
