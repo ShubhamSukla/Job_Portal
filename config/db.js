@@ -1,14 +1,16 @@
 import mongoose from "mongoose";
 import colors from "colors";
 
-const connectDb=async()=>{
-    try{
-        const conn =await mongoose.connect(process.env.MONGO_URL)
+const connectDb = async () => {
+    try {
+        const conn = await mongoose.connect(process.env.MONGO_URL)
         console.log(`Connected To mongodb Database ${mongoose.connection.host}`.bgMagenta.white);
-    }catch(error)
-    {
+    } catch (error) {
         console.log(`MongoDB Error ${error}`.bgRed.white)
     }
 };
 
 export default connectDb;
+
+
+

@@ -1,8 +1,8 @@
 import JWT from 'jsonwebtoken';
 
-const userAuth = async(req,res,next)=>{ 
+const userAuth = async (req, res, next) => {
     const authHeader = req.headers.authorization;
-    if(!authHeader || !authHeader.startsWith('Bearer')){
+    if (!authHeader || !authHeader.startsWith('Bearer')) {
         next("Auth failed");
     }
     //console.log((authHeader));
@@ -14,12 +14,12 @@ const userAuth = async(req,res,next)=>{
     // console.log(t);
     // let token = authHeader.spilt(' ')[1];
     //console.log(token);
-    try{
-        const payload = JWT.verify(token,process.env.JWT_secret);
-       //console.log(payload);
-       req.user = {userId : payload.userId}
-       next();
-    }catch(err){
+    try {
+        const payload = JWT.verify(token, process.env.JWT_secret);
+        console.log(payload);
+        req.user = { userId: payload.UserId }
+        next();
+    } catch (err) {
         console.log(err);
         next("Auth failed");
     }
