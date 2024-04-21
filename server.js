@@ -10,6 +10,11 @@ import morgan from 'morgan';
 
 //files imports
 import connectDb from './config/db.js';
+
+// security
+import helmet from "helmet";
+import xss from "xss-clean";
+import mongoSanitize from "express-mongo-sanitize";
 //routes import
 
 import testRoutes from "./routes/testRoutes.js";
@@ -28,6 +33,9 @@ const app = express()
 
 
 //middlewares
+app.use(helmet({}));
+app.use(xss());
+app.use(mongoSanitize());
 app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
