@@ -1,5 +1,5 @@
 import express from "express";
-import { createJobController, getAllJobsController, updateJobController, deleteJobController } from "../controllers/jobsController.js";
+import { createJobController, getAllJobsController, updateJobController, deleteJobController, jobStatsController } from "../controllers/jobsController.js";
 import userAuth from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
@@ -17,5 +17,7 @@ router.patch("/update-job/:id", userAuth, updateJobController);
 //DELETE JOBS || DELETE
 router.delete("/delete-job/:id", userAuth, deleteJobController);
 
+// JOBS STATS FILTER || GET
+router.get("/job-stats", userAuth, jobStatsController);
 
 export default router;
