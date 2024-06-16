@@ -23,7 +23,7 @@ import testRoutes from "./routes/testRoutes.js";
 import authRoutes from './routes/authRoutes.js';
 import errorMiddleware from './middlewares/errorMiddleware.js';
 import userRoutes from './routes/userRoutes.js'
-import jobsRoutes from "./routes/jobsRoute.js"
+import jobsRoutes from "./routes/jobsRoute.js" 
 
 dotenv.config();
 
@@ -47,12 +47,13 @@ const options = {
             },
         ],
     },
-    apis: ["./routes/*.js"],
+    apis: ["./routes/*.js"], 
 };
 
 const spec = swaggerDoc(options);
 
-const app = express()
+const app = express();
+//app.set('trust proxy', true);
 
 
 //middlewares
